@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+
+
+    <style>
+        .slides1 {
+            height: 200px;
+            width: 223px;
+display: grid;
+place-items: center;
+color: white;
+
+        }
+
+.slides1 i{
+
+    transform: scale(5);
+}
+
+
+
+        #slider {
+            display: flex;
+            height: 220px;
+            width: max-content;
+
+        }
+
+        .sliders {
+            width: 210px;
+            overflow-x: scroll;
+            scroll-behavior: smooth;
+        }
+
+        .sliders::-webkit-scrollbar {
+            display: none;
+        }
+
+.flex{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+.flex button{
+outline: none;
+border-width: 0px;
+background-color: transparent;
+cursor: pointer;
+}
+
+.flex button i{
+transform: scale(2.2);
+
+}
+
+
+
+.slider-box{
+padding: 1rem;
+width: fit-content;
+border-radius: 0.4rem;
+box-shadow: 0 0 10px grey;
+transform: scale(1.3);
+position: absolute;
+margin: auto;
+left: 0;
+bottom: 0;
+right: 0;
+top: 0;
+height: fit-content;
+background-color: white;
+}
+
+
+.points{
+    display: flex;
+}
+
+.points .dots{
+height: 9px;
+width: 9px;
+background-color: black;
+margin: 0.2rem;
+border-radius: 1.6rem;
+
+}
+
+
+
+
+
+
+
+
+
+    </style>
+
+
+
+
+
+
+
+
+</head>
+
+<body id="bg-color">
+
+
+<div class="slider-box">
+
+    <div class="sliders">
+
+        <div id="slider">
+
+            <div class="slides1" style="background-color: rgb(235, 28, 28);"><i class="far fa-jack-o-lantern"></i></div>
+            <div class="slides1" style="background-color: rgb(20, 20, 240);"><i class="fas fa-stroopwafel"></i></div>
+            <div class="slides1" style="background-color: purple;"><i class="far fa-hand-heart"></i></div>
+            <div class="slides1" style="background-color: orange"><i class="fab fa-slack"></i></div>
+            <div class="slides1" style="background-color: rgb(151, 218, 18);"><i class="fab fa-joomla"></i></div>
+            <div class="slides1" style="background-color: green;"><i class="fab fa-pied-piper"></i></div>
+
+
+
+        </div>
+
+    </div><br><br>
+
+    <div class="flex">
+    <button class="prev" onclick="prev()" disabled="true"><i class="far fa-arrow-circle-left"></i></button>&nbsp;&nbsp;<div class="points">
+    <div class="dots"></div>
+    <div class="dots"></div>
+    <div class="dots"></div>
+    <div class="dots"></div>
+    <div class="dots"></div>
+    <div class="dots"></div></div>&nbsp;&nbsp;<button class="next" onclick="next()" ><i class="far fa-arrow-circle-right"></i></button>
+</div>
+
+</div>
+
+    <script>
+
+
+        let indexes = 0;
+
+        document.querySelector('.points').children[0].style.backgroundColor="red";
+document.querySelector('#bg-color').style.backgroundColor="rgb(235, 28, 28)";
+        
+
+
+        function next() {
+
+            indexes = indexes + 1;
+            let sliders = document.querySelector('.sliders #slider');
+            let a = sliders.children[parseInt(indexes)];
+            a.scrollIntoView(true);
+
+            if (indexes == 5) {
+
+                let right = document.querySelector('.next');
+
+                right.disabled = true;
+
+
+            }
+
+
+
+            
+            if (indexes == 1) {
+                
+                let left = document.querySelector('.prev');
+                left.disabled = false;
+                document.querySelector('.points').children[1].style.backgroundColor="blue";
+        document.querySelector('.points').children[0].style.backgroundColor="black";
+document.querySelector('#bg-color').style.backgroundColor="rgb(20, 20, 240)";
+               
+}else{
+    document.querySelector('.points').children[1].style.backgroundColor="black";
+   
+
+}
+
+
+if (indexes == 2) {               
+    document.querySelector('.points').children[2].style.backgroundColor="purple";
+document.querySelector('#bg-color').style.backgroundColor="purple";
+              
+}else{
+    document.querySelector('.points').children[2].style.backgroundColor="black";
+
+}
+
+
+if (indexes == 3) {               
+    document.querySelector('.points').children[3].style.backgroundColor="orange";
+    document.querySelector('#bg-color').style.backgroundColor="orange";
+              
+}else{
+    document.querySelector('.points').children[3].style.backgroundColor="black";
+
+}
+
+if (indexes == 4) {               
+    document.querySelector('.points').children[4].style.backgroundColor="yellowgreen";
+document.querySelector('#bg-color').style.backgroundColor="rgb(151, 218, 18)";
+              
+}else{
+    document.querySelector('.points').children[4].style.backgroundColor="black";
+
+}
+
+
+if (indexes == 5) {               
+    document.querySelector('.points').children[5].style.backgroundColor="green";
+document.querySelector('#bg-color').style.backgroundColor="green";
+              
+}else{
+    document.querySelector('.points').children[5].style.backgroundColor="black";
+
+}
+
+
+
+
+
+        }
+
+
+        function prev() {
+
+            indexes = indexes - 1;
+            let sliders = document.querySelector('.sliders #slider');
+            let a = sliders.children[parseInt(indexes)];
+            a.scrollIntoView(true);
+
+
+            if (indexes == 0) {
+
+                let left = document.querySelector('.prev');
+                left.disabled = true;
+                document.querySelector('.points').children[0].style.backgroundColor="red";
+document.querySelector('#bg-color').style.backgroundColor="rgb(235, 28, 28)";
+                               
+                            }else{
+                                document.querySelector('.points').children[0].style.backgroundColor="black";  
+                            
+                            }
+            
+
+
+            if (indexes == 4) {
+
+                let right = document.querySelector('.next');
+
+                right.disabled = false;
+
+            }
+
+
+ if (indexes == 1) {               
+               
+document.querySelector('.points').children[1].style.backgroundColor="blue";
+document.querySelector('#bg-color').style.backgroundColor="rgb(20, 20, 240)";
+               
+}else{
+    document.querySelector('.points').children[1].style.backgroundColor="black";  
+
+}
+
+            if (indexes == 2) {               
+    document.querySelector('.points').children[2].style.backgroundColor="purple";
+document.querySelector('#bg-color').style.backgroundColor="purple";
+              
+}else{
+    document.querySelector('.points').children[2].style.backgroundColor="black";
+
+}
+
+
+if (indexes == 3) {               
+    document.querySelector('.points').children[3].style.backgroundColor="yellow";
+    document.querySelector('#bg-color').style.backgroundColor="orange";
+              
+}else{
+    document.querySelector('.points').children[3].style.backgroundColor="black";
+
+}
+
+if (indexes == 4) {               
+    document.querySelector('.points').children[4].style.backgroundColor="yellowgreen";
+    document.querySelector('#bg-color').style.backgroundColor="rgb(151, 218, 18)";
+              
+}else{
+    document.querySelector('.points').children[4].style.backgroundColor="black";
+
+}
+
+
+if (indexes == 5) {               
+    document.querySelector('.points').children[5].style.backgroundColor="green";
+              
+}else{
+    document.querySelector('.points').children[5].style.backgroundColor="black";
+
+}
+
+
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
